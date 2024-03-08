@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Games : MonoBehaviour
 {
@@ -18,6 +16,8 @@ public class Games : MonoBehaviour
 
     void Start()
     {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         this.carrot.Load_Carrot();
         this.carrot.shop.onCarrotPaySuccess+=this.GetComponent<Shop_Manager>().on_buy_success;
         this.carrot.ads.set_act_Rewarded_Success(this.GetComponent<Shop_Manager>().on_reward_success);
