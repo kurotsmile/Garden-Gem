@@ -1,0 +1,4 @@
+Android App id:
+ca-app-pub-5388516931803092~6888560524
+
+Ios App ID:
