@@ -6,6 +6,7 @@ public class Games : MonoBehaviour
 {
     [Header("Obj main")]
     public Carrot.Carrot carrot;
+    public IronSourceAds ads;
     public Slot_Manager slot_manager;
     public Sprite sp_reward_rules;
     public Game_Ani game_ani;
@@ -19,8 +20,10 @@ public class Games : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         this.carrot.Load_Carrot();
+        this.ads.On_Load();
+        this.carrot.act_buy_ads_success=this.ads.RemoveAds;
         this.carrot.shop.onCarrotPaySuccess+=this.GetComponent<Shop_Manager>().on_buy_success;
-        this.carrot.ads.set_act_Rewarded_Success(this.GetComponent<Shop_Manager>().on_reward_success);
+        this.ads.onRewardedSuccess+=this.GetComponent<Shop_Manager>().on_reward_success;
 
         this.game_ani.play_load();
 
@@ -37,7 +40,7 @@ public class Games : MonoBehaviour
 
     public void btn_spin_auto()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.carrot.play_sound_click();
         this.slot_manager.spin_auto();
     }
@@ -49,7 +52,7 @@ public class Games : MonoBehaviour
 
     public void btn_setting()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.slot_manager.hide_all_line_check();
         this.box_setting=this.carrot.Create_Setting();
         
@@ -88,7 +91,7 @@ public class Games : MonoBehaviour
 
     public void show_reward_rules_by_type(int type=-1)
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.carrot.play_sound_click();
         this.slot_manager.hide_all_line_check();
         Carrot.Carrot_Box box_rule = this.carrot.Create_Box("Reward Rules");
@@ -113,35 +116,35 @@ public class Games : MonoBehaviour
 
     public void btn_rate()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.slot_manager.hide_all_line_check();
         this.carrot.show_rate();
     }
 
     public void btn_share()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.slot_manager.hide_all_line_check();
         this.carrot.show_share();
     }
 
     public void btn_carrot_app()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.slot_manager.hide_all_line_check();
         this.carrot.show_list_carrot_app();
     }
 
     public void btn_rank()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.slot_manager.hide_all_line_check();
         this.carrot.game.Show_List_Top_player();
     }
 
     public void btn_shop()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.slot_manager.hide_all_line_check();
         this.carrot.play_sound_click();
         this.GetComponent<Shop_Manager>().show_shop();
@@ -149,7 +152,7 @@ public class Games : MonoBehaviour
 
     public void btn_shop_coin()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.slot_manager.hide_all_line_check();
         this.carrot.play_sound_click();
         this.GetComponent<Shop_Manager>().show_shop_coin();

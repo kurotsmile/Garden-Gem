@@ -126,7 +126,7 @@ public class Shop_Manager : MonoBehaviour
     {
         if (this.list_buy_item[index_item])
         {
-            this.msg_shop=this.GetComponent<Games>().carrot.show_msg("Shop", "Can you buy or watch ads to receive this item?", Carrot.Msg_Icon.Question);
+            this.msg_shop=this.GetComponent<Games>().carrot.Show_msg("Shop", "Can you buy or watch ads to receive this item?", Carrot.Msg_Icon.Question);
             this.msg_shop.add_btn_msg("Buy",()=> buy_shop_item(index_item));
             this.msg_shop.add_btn_msg("Watch ads", ()=> watch_ads_shop_item(index_item));
             this.msg_shop.add_btn_msg("Cancel",this.close_msg_shop);
@@ -146,7 +146,7 @@ public class Shop_Manager : MonoBehaviour
     private void watch_ads_shop_item(int index_item)
     {
         this.index_temp_act_shop = index_item;
-        this.GetComponent<Games>().carrot.ads.show_ads_Rewarded();
+        this.GetComponent<Games>().ads.ShowRewardedVideo();
     }
 
     private void close_msg_shop()
